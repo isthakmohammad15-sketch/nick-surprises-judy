@@ -121,7 +121,7 @@ const Slide7Finale = ({ onReplay }: Props) => {
         <div className="bg-black/80 backdrop-blur-sm rounded-lg px-4 py-2 text-white text-sm border border-white/20 cursor-pointer hover:bg-black/90 transition-colors">
           <div className="flex items-center gap-2">
             <span className="text-yellow-400">💡</span>
-            <span>Click "Replay the Magic" to start over</span>
+            <span>zoom in to see more photos after finish Click "Replay the Magic" to start over</span>
           </div>
         </div>
       </div>
