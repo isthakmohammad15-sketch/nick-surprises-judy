@@ -18,7 +18,7 @@ const TRACK_VOLUME = 0.45;
 const INITIAL_COUNTDOWN = 5;
 
 const SlideContainer = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [currentSlide, setCurrentSlide] = useState(-1);
   const [countdown, setCountdown] = useState(INITIAL_COUNTDOWN);
   const [countdownActive, setCountdownActive] = useState(true);
   const backgroundAudioRef = useRef<HTMLAudioElement>(null);
@@ -73,6 +73,7 @@ const SlideContainer = () => {
       playTone(880, 0.28);
       const doneTimer = window.setTimeout(() => {
         setCountdownActive(false);
+        setCurrentSlide(0);
       }, 1200);
       return () => window.clearTimeout(doneTimer);
     }
@@ -196,7 +197,9 @@ const SlideContainer = () => {
       // Reset everything for replay
       setCountdown(INITIAL_COUNTDOWN);
       setCountdownActive(true);
+      setCurrentSlide(-1);
       stopPlaylist();
+      return;
     }
     setCurrentSlide(index);
   }, []);
@@ -295,18 +298,19 @@ const SlideContainer = () => {
         }}
       />
 
-      {slides.map((slide, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 flex items-center justify-center transition-all duration-[1200ms] ease-in-out ${
-            index === currentSlide
-              ? "opacity-100 visible pointer-events-auto z-10"
-              : "opacity-0 invisible pointer-events-none z-0"
-          }`}
-        >
-          {slide}
-        </div>
-      ))}
+      {!countdownActive &&
+        slides.map((slide, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 flex items-center justify-center transition-all duration-[1200ms] ease-in-out ${
+              index === currentSlide
+                ? "opacity-100 visible pointer-events-auto z-10"
+                : "opacity-0 invisible pointer-events-none z-0"
+            }`}
+          >
+            {slide}
+          </div>
+        ))}
 
       {countdownActive && (
         <div className="absolute inset-0 z-40 flex items-center justify-center bg-background/85 backdrop-blur-md">
