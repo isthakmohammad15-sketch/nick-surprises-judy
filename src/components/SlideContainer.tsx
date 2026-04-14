@@ -316,13 +316,13 @@ const SlideContainer = () => {
         <div className="absolute inset-0 z-40 flex items-center justify-center bg-background/85 backdrop-blur-md">
           <div className="premium-card flex min-h-52 w-[min(90vw,24rem)] flex-col items-center justify-center rounded-[2rem] px-8 py-10 text-center shadow-2xl">
             <p className="mb-3 text-sm uppercase tracking-[0.35em] text-muted-foreground">
-              Starting your memory journey
+              Suprise starts in
             </p>
             <div className="font-limelight text-7xl text-primary drop-shadow-sm">
               {countdown > 0 ? countdown : "Go!"}
             </div>
             <p className="mt-4 text-base text-muted-foreground">
-              Music and slides will begin together in a moment
+              Get ready for a trip down memory lane! 
             </p>
           </div>
         </div>
